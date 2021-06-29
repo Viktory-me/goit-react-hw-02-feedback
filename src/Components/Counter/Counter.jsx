@@ -1,16 +1,16 @@
-/** @format */
-
-import React from "react"
-import PropTypes from "prop-types"
-import Statistic from "../Statistic/Statistic"
-import FeedbackOptions from "../FeedbackOptions/FeedbackOptions"
+import React from "react";
+import PropTypes from "prop-types";
+import Statistic from "../Statistic/Statistic";
+import FeedbackOptions from "../FeedbackOptions/FeedbackOptions";
+import Section from "../Section/Section";
+import Notification from "../Notification/Notification";
 
 class Counter extends React.Component {
 	static defaultProps = {
 		initialGood: 0,
 		initialNeutral: 0,
 		initialBad: 0,
-	}
+	};
 
 	static propTypes = {
 		state: PropTypes.arrayOf(
@@ -20,32 +20,50 @@ class Counter extends React.Component {
 				bad: PropTypes.number.isRequired,
 			})
 		),
-	}
+	};
 
 	state = {
 		good: this.props.initialGood,
 		neutral: this.props.initialNeutral,
 		bad: this.props.initialBad,
-	}
+	};
 
 	handleIncrement = () => {
 		this.setState((prevState) => ({
 			good: prevState.good + 1,
-		}))
-	}
+		}));
+	};
+	countTotalFeedback = () => {
+		return Object.values(this.state).reduce((acc, item) => acc + item, 0);
+	};
+
+	countPositiveFeedbackPercentage = () => {
+		return Math.round((this.state.good * 100) / this.countTotalFeedback());
+	};
 
 	render() {
 		return (
-			<section className='Counter'>
-				<FeedbackOptions onIncrement={this.handleIncrement} />
-				<Statistic
-					good={this.state.good}
-					neutral={this.state.neutral}
-					bad={this.state.bad}
-				/>
-			</section>
-		)
+			<>
+				<Section title='Please leave feedback'>
+					<FeedbackOptions onIncrement={this.handleIncrement} />{" "}
+				</Section>
+
+				<Section title='Statistics'>
+					{this.countTotalFeedback() === 0 ? (
+						<Notification message='No feedback given'></Notification>
+					) : (
+						<Statistic
+							good={this.state.good}
+							neutral={this.state.neutral}
+							bad={this.state.bad}
+							total={this.countTotalFeedback()}
+							positivePercentage={this.countPositiveFeedbackPercentage()}
+						/>
+					)}
+				</Section>
+			</>
+		);
 	}
-};
+}
 
 export default Counter;
