@@ -28,11 +28,12 @@ class Counter extends React.Component {
 		bad: this.props.initialBad,
 	};
 
-	handleIncrement = () => {
-		this.setState((prevState) => ({
-			good: prevState.good + 1,
+	setActiveItem = (item) => {
+		this.setState((PrevState) => ({
+			[item]: PrevState[item] + 1,
 		}));
 	};
+
 	countTotalFeedback = () => {
 		return Object.values(this.state).reduce((acc, item) => acc + item, 0);
 	};
@@ -45,7 +46,10 @@ class Counter extends React.Component {
 		return (
 			<>
 				<Section title='Please leave feedback'>
-					<FeedbackOptions onIncrement={this.handleIncrement} />{" "}
+					<FeedbackOptions
+						options={this.state}
+						onLeaveFeedback={this.setActiveItem}
+					/>{" "}
 				</Section>
 
 				<Section title='Statistics'>

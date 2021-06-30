@@ -1,20 +1,28 @@
-import React from "react"
+import React from "react";
+import PropTypes from "prop-types";
+import s from "./Feedback.module.css";
 
-const FeedbackOptions = ({ onIncrement }) => {
+function FeedbackOptions({ options, onLeaveFeedback }) {
+	const namesOfItems = Object.keys(options);
+
 	return (
-		<div className='feedback'>
-			<h2 className='feedTitle'>Please leave feedback</h2>
-			<button className='btnFeed' onClick={onIncrement}>
-				Good
-			</button>
-			<button className='btnFeed' onClick={onIncrement}>
-				Neutral
-			</button>
-			<button className='btnFeed' onClick={onIncrement}>
-				Bad
-			</button>
-		</div>
-	)
+		<ul className={s.btnList}>
+			{namesOfItems.map((item) => (
+				<li key={item}>
+					<button
+						className={s.btnFeed}
+						type='button'
+						onClick={() => onLeaveFeedback(item)}
+					>
+						{item.charAt(0).toUpperCase() + item.slice(1)}
+					</button>
+				</li>
+			))}
+		</ul>
+	);
 }
+FeedbackOptions.propTypes = {
+	onLeaveFeedback: PropTypes.func.isRequired,
+};
 
-export default FeedbackOptions
+export default FeedbackOptions;
