@@ -8,3 +8,7 @@
 	font-weight: 500;
 	line-height: 20px;
 }
+
+.titleItem {
+	text-decoration: underline;
+}

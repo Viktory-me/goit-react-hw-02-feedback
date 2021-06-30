@@ -5,8 +5,8 @@
 }
 
 .btnFeed {
-	margin-left: 30px;
-	width: 70px;
+	margin-right: 30px;
+	width: 100px;
 	padding: 10px 10px 10px 10px;
 	border: none;
 	border-radius: 4px;
@@ -17,4 +17,5 @@
 .btnFeed:focus {
 	box-shadow: 200px 0 0 0 rgba(0, 0, 0, 0.3) inset;
 	text-shadow: 3px 3px 7px white;
+	text-decoration: underline;
 }

@@ -5,11 +5,22 @@ import s from "./Statistic.module.css";
 const Statistic = ({ good, neutral, bad, total, positivePercentage }) => {
 	return (
 		<ul className={s.statisticList}>
-			<li className={s.stateItem}>Good: {good}</li>
-			<li className={s.stateItem}>Neutral: {neutral}</li>
-			<li className={s.stateItem}>Bad: {bad}</li>
-			<li className={s.stateItem}>Total: {total}</li>
-			<li className={s.stateItem}>Positive feedback: {positivePercentage}%</li>
+			<li className={s.stateItem}>
+				Good: <span className={s.titleItem}>{good}</span>
+			</li>
+			<li className={s.stateItem}>
+				Neutral: <span className={s.titleItem}>{neutral}</span>
+			</li>
+			<li className={s.stateItem}>
+				Bad: <span className={s.titleItem}>{bad}</span>
+			</li>
+			<li className={s.stateItem}>
+				Total: <span className={s.titleItem}>{total}</span>
+			</li>
+			<li className={s.stateItem}>
+				Positive feedback:{" "}
+				<span className={s.titleItem}>{positivePercentage}%</span>
+			</li>
 		</ul>
 	);
 };
