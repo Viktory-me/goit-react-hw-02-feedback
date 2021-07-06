@@ -1,18 +1,18 @@
 .App {
-	text-align: center;
+  text-align: center;
 }
 h2 {
-	margin: 0 auto;
-	text-align: center;
-	color: #f0f0f0c9;
-	text-shadow: #fff -1px -1px 0, #333 1px 1px 0;
-	font-size: 42px;
+  margin: 0 auto;
+  text-align: center;
+  color: #f0f0f0c9;
+  text-shadow: #fff -1px -1px 0, #333 1px 1px 0;
+  font-size: 42px;
 }
 ul {
-	padding-inline-start: 0px;
-	list-style: none;
-	font-size: 20px;
+  padding-inline-start: 0px;
+  list-style: none;
+  font-size: 20px;
 }
 button {
-	font-size: 20px;
+  font-size: 20px;
 }
